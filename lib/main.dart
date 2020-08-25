@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:tabline/router.gr.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,11 +11,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Tabline',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        appBarTheme: AppBarTheme(
+          color: Colors.white,
+          elevation: 0,
+        ),
+        scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: "Poppins",
       ),
-      // home: MyHomePage(title: 'Flutter Demo Home Page'),
+      builder: (context, __) => ExtendedNavigator<Router>(
+        router: Router(),
+      ),
     );
   }
 }
