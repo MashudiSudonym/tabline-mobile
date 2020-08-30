@@ -14,14 +14,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
-          color: Colors.white,
+          color: Colors.black,
           elevation: 0,
         ),
         scaffoldBackgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: "Poppins",
       ),
-      builder: (context, __) => ExtendedNavigator<Router>(
+      builder: ExtendedNavigator.builder<Router>(
         router: Router(),
       ),
     );

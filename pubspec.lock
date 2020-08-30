@@ -148,6 +148,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  circular_bottom_navigation:
+    dependency: "direct main"
+    description:
+      name: circular_bottom_navigation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   cli_util:
     dependency: transitive
     description:
@@ -431,13 +438,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.7"
-  neos_bottom_navigation:
-    dependency: "direct main"
-    description:
-      name: neos_bottom_navigation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.3"
   nested:
     dependency: transitive
     description:
