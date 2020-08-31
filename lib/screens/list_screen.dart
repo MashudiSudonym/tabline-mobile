@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tabline/models/location.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ListScreen extends StatefulWidget {
   @override
@@ -18,8 +23,86 @@ class _ListScreenState extends State<ListScreen> {
         ),
         elevation: 0.0,
       ),
-      body: Center(
-        child: Text('LIST'),
+      body: ListView.builder(
+        physics: BouncingScrollPhysics(),
+        itemCount: locations.length,
+        itemBuilder: (context, index) {
+          return AnimationConfiguration.staggeredList(
+            position: index,
+            duration: Duration(milliseconds: 375),
+            child: SlideAnimation(
+              horizontalOffset: 50.0,
+              child: FadeInAnimation(
+                child: Padding(
+                  padding: EdgeInsets.all(
+                      MediaQuery.of(context).size.width / 100 * 1),
+                  child: Card(
+                    elevation: 4.0,
+                    shape: Border(
+                      right: BorderSide(
+                        color: Colors.black87,
+                        width: MediaQuery.of(context).size.width / 100 * 2,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minWidth: 44,
+                            minHeight: 44,
+                            maxWidth: 100,
+                            maxHeight: 100,
+                          ),
+                          child: Image(
+                            image: AssetImage('assets/jpg/gambar-tb.jpg'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 100 * 4,
+                        ),
+                        Flexible(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${locations[index].name.toUpperCase()}',
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.width /
+                                      100 *
+                                      4.8,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height /
+                                    100 *
+                                    1,
+                              ),
+                              Text(
+                                '${locations[index].address}',
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.width /
+                                      100 *
+                                      3.5,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 100 * 2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
