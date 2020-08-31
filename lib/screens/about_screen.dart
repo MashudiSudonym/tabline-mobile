@@ -21,7 +21,6 @@ class _AboutScreenState extends State<AboutScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height / 100 * 20,

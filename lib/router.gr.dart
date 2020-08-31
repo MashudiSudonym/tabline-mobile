@@ -9,15 +9,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'screens/detail_screen.dart';
 import 'screens/main_screen.dart';
 import 'screens/splash_screen.dart';
 
 class Routes {
   static const String splashScreen = '/';
   static const String mainScreen = '/main-screen';
+  static const String detailScreen = '/detail-screen';
   static const all = <String>{
     splashScreen,
     mainScreen,
+    detailScreen,
   };
 }
 
@@ -27,6 +30,7 @@ class Router extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.splashScreen, page: SplashScreen),
     RouteDef(Routes.mainScreen, page: MainScreen),
+    RouteDef(Routes.detailScreen, page: DetailScreen),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -43,5 +47,35 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    DetailScreen: (data) {
+      final args = data.getArgs<DetailScreenArguments>(
+        orElse: () => DetailScreenArguments(),
+      );
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => DetailScreen(
+          name: args.name,
+          address: args.address,
+          phone: args.phone,
+          latitude: args.latitude,
+          longitude: args.longitude,
+        ),
+        settings: data,
+      );
+    },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// DetailScreen arguments holder class
+class DetailScreenArguments {
+  final String name;
+  final String address;
+  final String phone;
+  final double latitude;
+  final double longitude;
+  DetailScreenArguments(
+      {this.name, this.address, this.phone, this.latitude, this.longitude});
 }
