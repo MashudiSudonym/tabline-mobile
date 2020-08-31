@@ -41,6 +41,7 @@ dependencies:
   provider: ^4.3.2
   circular_bottom_navigation: ^1.0.1
   url_launcher: ^5.5.1
+  share: ^0.6.5
 
 dev_dependencies:
   flutter_test:

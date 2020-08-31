@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailScreen extends StatefulWidget {
   final String name;
@@ -20,9 +23,12 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text(
           widget.name,
@@ -65,6 +71,100 @@ class _DetailScreenState extends State<DetailScreen> {
                 fontSize: MediaQuery.of(context).size.width / 100 * 3.8,
                 fontWeight: FontWeight.w300,
               ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 100 * 3,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width / 100 * 15,
+                  height: MediaQuery.of(context).size.height / 100 * 15,
+                  child: MaterialButton(
+                    shape: CircleBorder(
+                      side: BorderSide(
+                        width: 0,
+                        style: BorderStyle.solid,
+                        color: Colors.green,
+                      ),
+                    ),
+                    elevation: 4.0,
+                    color: Colors.green,
+                    child: FaIcon(
+                      FontAwesomeIcons.phoneAlt,
+                      size: MediaQuery.of(context).size.height / 100 * 3,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      if (widget.phone != '-') {
+                        launch('tel:${widget.phone}');
+                      } else {
+                        _scaffoldKey.currentState.showSnackBar(
+                          SnackBar(
+                            content: Text('Tidak ada nomor teleponnya'),
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width / 100 * 15,
+                  height: MediaQuery.of(context).size.height / 100 * 15,
+                  child: MaterialButton(
+                    shape: CircleBorder(
+                      side: BorderSide(
+                        width: 0,
+                        style: BorderStyle.solid,
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                    elevation: 4.0,
+                    color: Colors.blueAccent,
+                    child: FaIcon(
+                      FontAwesomeIcons.sms,
+                      size: MediaQuery.of(context).size.height / 100 * 3,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      if (widget.phone != '-') {
+                        launch('sms:${widget.phone}');
+                      } else {
+                        _scaffoldKey.currentState.showSnackBar(
+                          SnackBar(
+                            content: Text('Tidak ada nomor teleponnya'),
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width / 100 * 15,
+                  height: MediaQuery.of(context).size.height / 100 * 15,
+                  child: MaterialButton(
+                    shape: CircleBorder(
+                      side: BorderSide(
+                        width: 0,
+                        style: BorderStyle.solid,
+                        color: Colors.white,
+                      ),
+                    ),
+                    elevation: 4.0,
+                    color: Colors.white,
+                    child: FaIcon(
+                      FontAwesomeIcons.shareAlt,
+                      size: MediaQuery.of(context).size.height / 100 * 3,
+                      color: Colors.black87,
+                    ),
+                    onPressed: () {
+                      Share.share(
+                          'hei, tambal ban dekat sini ada di ${widget.name}, ${widget.address}.\nAnda bisa menghubunginya di ${widget.phone}.');
+                    },
+                  ),
+                ),
+              ],
             ),
           ],
         ),
