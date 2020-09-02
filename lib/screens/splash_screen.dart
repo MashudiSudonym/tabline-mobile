@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:tabline/router.gr.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,8 +16,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _removeScreen() {
     return _timer = Timer(
-      Duration(seconds: 2),
+      Duration(seconds: 3),
       () async {
+        await checkPermission();
         ExtendedNavigator.of(context).replace(Routes.mainScreen);
       },
     );

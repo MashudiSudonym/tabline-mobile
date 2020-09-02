@@ -1,4 +1,5 @@
 class Location {
+  final int id;
   final String name;
   final String address;
   final String phone;
@@ -6,6 +7,7 @@ class Location {
   final double longitude;
 
   Location({
+    this.id,
     this.name,
     this.address,
     this.phone,
@@ -17,6 +19,7 @@ class Location {
 // data location
 List<Location> locations = [
   Location(
+    id: 1,
     name: 'Tambal Ban AS Ban',
     address: 'Jl. Taman Siswa (Dekat UNISNU)',
     phone: '+6285293314704',
@@ -24,6 +27,7 @@ List<Location> locations = [
     longitude: 110.6924237,
   ),
   Location(
+    id: 2,
     name: 'Tambal Ban Mulyadi',
     address: 'Desa Ngabul Rt.01/02',
     phone: '-',
@@ -31,6 +35,7 @@ List<Location> locations = [
     longitude: 110.7087881,
   ),
   Location(
+    id: 3,
     name: 'Tambal Ban Gitong',
     address: 'Desa Ngabul Rt.01/01',
     phone: '-',
@@ -38,6 +43,7 @@ List<Location> locations = [
     longitude: 110.7049787,
   ),
   Location(
+    id: 4,
     name: 'Saudara Skok',
     address: 'Desa Langon Rt.01/01',
     phone: '+6281326729089',
@@ -45,6 +51,7 @@ List<Location> locations = [
     longitude: 110.7046115,
   ),
   Location(
+    id: 5,
     name: 'Tambal Ban Imam Sanusi',
     address: 'Desa Senenan Rt.02/01',
     phone: '+6285879944503',
@@ -52,6 +59,7 @@ List<Location> locations = [
     longitude: 110.6817997,
   ),
   Location(
+    id: 6,
     name: 'Tambal Ban Pak Solikin',
     address: 'Jl. Raya Kyai Hasim. Siripan. Jepara',
     phone: '-',
@@ -59,6 +67,7 @@ List<Location> locations = [
     longitude: 110.6773429,
   ),
   Location(
+    id: 7,
     name: 'Tambal Ban Mbah Mo',
     address: 'Desa Tegal Sambi',
     phone: '-',
@@ -66,6 +75,7 @@ List<Location> locations = [
     longitude: 110.6527033,
   ),
   Location(
+    id: 8,
     name: 'Tambal Ban Mas Arvid',
     address: 'Jl. Sultan Hadlirin. Tegal Sambi. Jepara',
     phone: '+6285643162379',
@@ -73,6 +83,7 @@ List<Location> locations = [
     longitude: 110.6587759,
   ),
   Location(
+    id: 9,
     name: 'Tambal Ban Pak Zim',
     address: 'Desa Tegal Sambi Rt.11/02',
     phone: '+6285290126379',
@@ -80,6 +91,7 @@ List<Location> locations = [
     longitude: 110.6513857,
   ),
   Location(
+    id: 10,
     name: 'Tambal Ban Ariyanto',
     address: 'Desa Krapyak Rt.02/05',
     phone: '-',

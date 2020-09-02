@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tabline/models/location.dart';
 import 'package:tabline/router.gr.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ListScreen extends StatefulWidget {
   @override
