@@ -53,11 +53,7 @@ class Router extends RouterBase {
       );
       return CupertinoPageRoute<dynamic>(
         builder: (context) => DetailScreen(
-          name: args.name,
-          address: args.address,
-          phone: args.phone,
-          latitude: args.latitude,
-          longitude: args.longitude,
+          uid: args.uid,
         ),
         settings: data,
       );
@@ -71,11 +67,6 @@ class Router extends RouterBase {
 
 /// DetailScreen arguments holder class
 class DetailScreenArguments {
-  final String name;
-  final String address;
-  final String phone;
-  final double latitude;
-  final double longitude;
-  DetailScreenArguments(
-      {this.name, this.address, this.phone, this.latitude, this.longitude});
+  final String uid;
+  DetailScreenArguments({this.uid});
 }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "123164435661",
+    "firebase_url": "https://tabline-8ecec.firebaseio.com",
+    "project_id": "tabline-8ecec",
+    "storage_bucket": "tabline-8ecec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123164435661:android:f6ef2a422018b92bf8f584",
+        "android_client_info": {
+          "package_name": "c.m.tabline.tabline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123164435661-pp2d80rlqptnfp8pb4cdhg3bjj1rg8rm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "c.m.tabline.tabline",
+            "certificate_hash": "b04d165c671b4acc2564bf050c759ca41787f19f"
+          }
+        },
+        {
+          "client_id": "123164435661-parqnogktpeeq7ib404g0ckusrkkei17.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqeiQAYsHLfIZL6BrYYhWmnWcS-7PRjRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123164435661-parqnogktpeeq7ib404g0ckusrkkei17.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:tabline/models/location.dart';
+import 'package:tabline/data/data.dart';
+import 'package:tabline/models/locations.dart';
 import 'package:tabline/router.gr.dart';
 
 import '../utils.dart';
@@ -16,6 +18,7 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   Completer<GoogleMapController> _controller = Completer();
+  StreamSubscription<QuerySnapshot> _currentSubscription;
 
   static final CameraPosition _kInitialPositiion = const CameraPosition(
     target: LatLng(-6.649179, 110.707172),
@@ -25,12 +28,19 @@ class _MapScreenState extends State<MapScreen> {
   Position _currentPosition;
   Set<Marker> _markers = Set();
   Marker _marker;
+  List<Locations> _locations = <Locations>[];
 
   @override
   void initState() {
     super.initState();
-    _getLocation();
+    _currentSubscription = loadAllLocationData().listen(_getLocation);
     _getCurrentLocation();
+  }
+
+  @override
+  void dispose() {
+    _currentSubscription.cancel();
+    super.dispose();
   }
 
   Future<void> _getCurrentLocation() async {
@@ -49,6 +59,7 @@ class _MapScreenState extends State<MapScreen> {
 
   Future<void> _goToMyLocation() async {
     final GoogleMapController controller = await _controller.future;
+
     setState(() {
       controller.animateCamera(
         CameraUpdate.newCameraPosition(
@@ -63,15 +74,17 @@ class _MapScreenState extends State<MapScreen> {
     });
   }
 
-  void _getLocation() async {
+  void _getLocation(QuerySnapshot snapshot) async {
     final _markerIcon = await getBytesFromAsset('assets/png/tire.png', 80);
 
     setState(() {
-      locations.forEach((location) {
+      _locations = listLocations(snapshot);
+      _locations.forEach((location) {
         _marker = Marker(
           flat: true,
-          markerId: MarkerId(location.name),
-          position: LatLng(location.latitude, location.longitude),
+          markerId: MarkerId(location.uid),
+          position:
+              LatLng(location.location.latitude, location.location.longitude),
           icon: BitmapDescriptor.fromBytes(_markerIcon),
           infoWindow: InfoWindow(
               title: location.name,
@@ -80,11 +93,7 @@ class _MapScreenState extends State<MapScreen> {
                 ExtendedNavigator.of(context).push(
                   Routes.detailScreen,
                   arguments: DetailScreenArguments(
-                    name: location.name,
-                    address: location.address,
-                    phone: location.phone,
-                    latitude: location.latitude,
-                    longitude: location.longitude,
+                    uid: location.uid,
                   ),
                 );
               }),

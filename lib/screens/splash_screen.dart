@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:tabline/router.gr.dart';
+import 'package:supercharged/supercharged.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -12,28 +13,16 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Timer _timer;
-
-  _removeScreen() {
-    return _timer = Timer(
-      Duration(seconds: 3),
-      () async {
-        await checkPermission();
-        ExtendedNavigator.of(context).replace(Routes.mainScreen);
-      },
-    );
+  Future<void> _removeScreen() async {
+    await 365.milliseconds.delay;
+    await checkPermission();
+    ExtendedNavigator.of(context).replace(Routes.mainScreen);
   }
 
   @override
   void initState() {
     super.initState();
     _removeScreen();
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
   }
 
   @override
