@@ -88,7 +88,7 @@ class _MapScreenState extends State<MapScreen> {
           icon: BitmapDescriptor.fromBytes(_markerIcon),
           infoWindow: InfoWindow(
               title: location.name,
-              snippet: location.address,
+              snippet: 'Buka : ${location.open} - ${location.close}',
               onTap: () {
                 ExtendedNavigator.of(context).push(
                   Routes.detailScreen,

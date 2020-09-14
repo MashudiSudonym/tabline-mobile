@@ -42,6 +42,8 @@ class _DetailScreenState extends State<DetailScreen> {
   double _longitude = 110.707172;
   String _image = '-';
   String _uid = '-';
+  String _open = '-';
+  String _close = '-';
 
   @override
   void initState() {
@@ -61,6 +63,8 @@ class _DetailScreenState extends State<DetailScreen> {
           _longitude = location.location.longitude;
           _image = location.image;
           _uid = location.uid;
+          _open = location.open;
+          _close = location.close;
         });
 
         _getCurrentLocationAndDistance();
@@ -142,12 +146,12 @@ class _DetailScreenState extends State<DetailScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height / 100 * 5,
+              height: MediaQuery.of(context).size.height / 100 * 2,
             ),
             Center(
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.height / 100 * 5,
+                  horizontal: MediaQuery.of(context).size.height / 100 * 1,
                 ),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -203,6 +207,16 @@ class _DetailScreenState extends State<DetailScreen> {
               height: MediaQuery.of(context).size.height / 100 * 1,
             ),
             Text(
+              'Buka : $_open - $_close',
+              style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width / 100 * 3.8,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 100 * 1,
+            ),
+            Text(
               _phone,
               style: TextStyle(
                 fontSize: MediaQuery.of(context).size.width / 100 * 3.8,
@@ -230,9 +244,8 @@ class _DetailScreenState extends State<DetailScreen> {
               height: MediaQuery.of(context).size.height / 100 * 5,
             ),
             Padding(
-              padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width / 100 * 7,
-                right: MediaQuery.of(context).size.width / 100 * 7,
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width / 100 * 3,
               ),
               child: Container(
                 width: double.infinity,

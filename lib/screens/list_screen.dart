@@ -163,6 +163,24 @@ class _ListScreenState extends State<ListScreen> {
                                                   3.5,
                                             ),
                                           ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                100 *
+                                                1,
+                                          ),
+                                          Text(
+                                            'Buka : ${_location.open} - ${_location.close}',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  100 *
+                                                  3.5,
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
