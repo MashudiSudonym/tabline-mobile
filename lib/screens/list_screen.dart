@@ -6,7 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:lottie/lottie.dart';
 import 'package:tabline/data/data.dart';
 import 'package:tabline/models/locations.dart';
-import 'package:tabline/router.gr.dart';
+import 'package:tabline/router.gr.dart' as routerApp;
 
 class ListScreen extends StatefulWidget {
   @override
@@ -84,8 +84,8 @@ class _ListScreenState extends State<ListScreen> {
                               child: InkWell(
                                 onTap: () {
                                   ExtendedNavigator.of(context).push(
-                                    Routes.detailScreen,
-                                    arguments: DetailScreenArguments(
+                                    routerApp.Routes.detailScreen,
+                                    arguments: routerApp.DetailScreenArguments(
                                       uid: _location.uid,
                                     ),
                                   );

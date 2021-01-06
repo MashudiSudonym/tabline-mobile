@@ -7,7 +7,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tabline/data/data.dart';
 import 'package:tabline/models/locations.dart';
-import 'package:tabline/router.gr.dart';
+import 'package:tabline/router.gr.dart' as routerApp;
 
 import '../utils.dart';
 
@@ -91,8 +91,8 @@ class _MapScreenState extends State<MapScreen> {
               snippet: 'Buka : ${location.open} - ${location.close}',
               onTap: () {
                 ExtendedNavigator.of(context).push(
-                  Routes.detailScreen,
-                  arguments: DetailScreenArguments(
+                  routerApp.Routes.detailScreen,
+                  arguments: routerApp.DetailScreenArguments(
                     uid: location.uid,
                   ),
                 );

@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:tabline/router.gr.dart';
+import 'package:tabline/router.gr.dart' as routerApp;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: "Poppins",
       ),
-      builder: ExtendedNavigator.builder<Router>(
-        router: Router(),
+      builder: ExtendedNavigator.builder<routerApp.Router>(
+        router: routerApp.Router(),
       ),
     );
   }
