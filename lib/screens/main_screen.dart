@@ -44,17 +44,17 @@ class _MainScreenState extends State<MainScreen> {
         items: [
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.list),
-            title: Text('BERANDA'),
+            label: 'BERANDA',
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.mapMarked),
-            title: Text('LOKASI'),
+            label: 'LOKASI',
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.infoCircle),
-            title: Text('TENTANG'),
+            label: 'TENTANG',
             backgroundColor: Colors.black,
           ),
         ],
